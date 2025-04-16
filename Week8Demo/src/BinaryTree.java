@@ -112,7 +112,6 @@ public class BinaryTree
 		return false;
 	}
 	
-	//FindParentNode
 	public int GetCurrentData()
 	{
 		if(CurrentPos!=null)
@@ -120,7 +119,7 @@ public class BinaryTree
 		
 		return -9999;
 	}
-	//PrintIteration
+	
 	public void printIteration()
 	{
 		printNodes(Root);
@@ -135,8 +134,7 @@ public class BinaryTree
 			printNodes(root.right);
 	}
 	
-	
-	
+	//FindParentNode
 	//Delete
 	
 }

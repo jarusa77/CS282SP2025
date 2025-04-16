@@ -4,6 +4,7 @@ public class Week8Demo
 
 	public static void main(String[] args) 
 	{
+		/*
 		BinaryTree BT = new BinaryTree();
 		
 		BT.Add(15);
@@ -19,10 +20,33 @@ public class Week8Demo
 		}
 		else
 			System.out.println("Not Found!");
+			*/
+		
+		BinarySearchTree bst =  new BinarySearchTree();
+		
+		bst.Add(50);
+		bst.Add(25);
+		bst.Add(75);
+		bst.Add(13);
+		bst.Add(87);
+		bst.Add(30);
+		bst.Add(35);
+		
+		bst.printIteration();
 		
 		
 		
-
+		if(bst.Find(1))
+		{
+			System.out.println("Found "+ bst.GetCurrent());
+		}
+		else
+		{
+			System.out.println("Not Found!!");
+		}
+		
+		
+		
 	}
 
 }
