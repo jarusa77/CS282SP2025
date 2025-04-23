@@ -45,6 +45,10 @@ public class Week8Demo
 			System.out.println("Not Found!!");
 		}
 		
+		bst.printIteration();
+		System.out.println("/n-----------------/n");
+		bst.Delete(50);
+		bst.printIteration();
 		
 		
 	}

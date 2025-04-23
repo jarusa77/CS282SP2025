@@ -128,10 +128,7 @@ public class BinarySearchTree
 			return FindParent(root.right,child);
 		}
 	}
-	
-	
-	
-	
+
 	public boolean Delete(int input)
 	{
 		if(!Find(input))
@@ -139,11 +136,34 @@ public class BinarySearchTree
 			return false;
 		}
 		
-		Node parent = FindParent(Root,CurrentPos);
+		
+		
+		
+		Node nodeToDelete=CurrentPos;
+		return DeleteNode(nodeToDelete);
+		
+	}
+	
+	private boolean DeleteNode(Node root)
+	{
+		CurrentPos=root;
+		
+		boolean isRoot=(Root==CurrentPos);
+		
+		Node parent=new Node(0);//Initialized  to  make compiler happy
+		
+		if(!isRoot)	
+			parent = FindParent(Root,CurrentPos);
 		
 		if(CurrentPos.left==null &&// No Children
 		   CurrentPos.right==null)
 		{			
+			if(isRoot)
+			{
+				Root=null;
+				CurrentPos=null;
+				return true;
+			}
 			if(CurrentPos.data<parent.data)
 				parent.left=null;
 			else
@@ -152,6 +172,13 @@ public class BinarySearchTree
 		}
 		else if(CurrentPos.right==null)//Left Child
 		{
+			if(isRoot)
+			{
+				Root=CurrentPos.left;
+				CurrentPos=Root;
+				return true;
+			}
+			
 			if(CurrentPos.data<parent.data)
 				parent.left=CurrentPos.left;
 			else
@@ -160,6 +187,13 @@ public class BinarySearchTree
 		}
 		else if(CurrentPos.left==null)//Right Child
 		{
+			if(isRoot)
+			{
+				Root=CurrentPos.right;
+				CurrentPos=Root;
+				return true;
+			}
+			
 			if(CurrentPos.data<parent.data)
 				parent.left=CurrentPos.right;
 			else
@@ -168,26 +202,32 @@ public class BinarySearchTree
 		}
 		else //both right and  left child
 		{
-			return  false;
 			//get Left most Right Decendent
-			//int LMRData =  GetLMR(CurrentPos.right);
+			Node LMR =  GetLMR(CurrentPos.right);
+			
+			CurrentPos.data = LMR.data;
+			DeleteNode(LMR);
+			return true;
+			
 		}
+		
+		
 	}
 	
-	/*
-	private int GetLMR(Node root)
+	
+	private Node GetLMR(Node root)
 	{
 		int data;
 		if(root.left==null)
 		{
-			
+			return root;
 		}
 			
 		
 		return GetLMR(root.left);
 	}
 	
-	*/
+	
 	
 	
 
